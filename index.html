@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copa Fifa 2026 | Día del Padre</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      font-family:Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #0046a8, #001d4a 45%, #071426 100%);
+      color:white;
+      overflow-x:hidden;
+      padding:28px 14px 60px;
+    }
+    .wrap{width:min(980px,100%);margin:auto;text-align:center;position:relative;z-index:2}
+    .hero{
+      width:100%;
+      border-radius:24px;
+      border:3px solid #ffcc00;
+      box-shadow:0 18px 50px rgba(0,0,0,.45), 0 0 25px rgba(255,204,0,.25);
+      display:block;
+    }
+    .buttons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin:24px auto 22px;
+    }
+    button{
+      border:none;
+      padding:15px 24px;
+      border-radius:999px;
+      background:#ffcc00;
+      color:#06245a;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(255,204,0,.35);
+      transition:.2s;
+    }
+    button:hover{transform:translateY(-3px);filter:brightness(1.08)}
+    .btn2{background:transparent;color:#ffcc00;border:2px solid #ffcc00}
+    .card{
+      display:none;
+      margin:20px auto 0;
+      max-width:780px;
+      background:rgba(255,255,255,.96);
+      color:#002b6c;
+      border-radius:24px;
+      padding:32px 26px;
+      box-shadow:0 18px 45px rgba(0,0,0,.35);
+      animation:show .55s ease both;
+    }
+    @keyframes show{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    .card h2{font-size:30px;margin-bottom:14px;color:#003b91}
+    .card p{font-size:18px;line-height:1.6;margin:10px auto;max-width:670px}
+    .firma{font-weight:900;color:#0050c8;margin-top:16px!important}
+    .gracias{margin-top:20px;font-weight:900;color:#003b91}
+    .float{
+      position:fixed;
+      top:-50px;
+      font-size:28px;
+      pointer-events:none;
+      z-index:99;
+      animation:fall linear forwards;
+    }
+    @keyframes fall{
+      to{transform:translateY(110vh) rotate(360deg);opacity:0}
+    }
+    .notice{font-size:13px;color:rgba(255,255,255,.7);margin-top:16px}
+    @media(max-width:600px){
+      body{padding:14px 10px 44px}
+      .hero{border-radius:16px;border-width:2px}
+      button{width:100%;max-width:310px;font-size:15px}
+      .buttons{gap:12px;margin-top:18px}
+      .card{padding:26px 18px}
+      .card h2{font-size:24px}
+      .card p{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="hero" src="portada.png" alt="Portada Copa Fifa 2026 Día del Padre">
+
+    <div class="buttons">
+      <button id="btnSorpresa" type="button">🎁 Abrir mi sorpresa</button>
+      <button id="btnCancion" class="btn2" type="button">🎵 Reproducir canción</button>
+    </div>
+
+    <section id="dedicatoria" class="card">
+      <div style="font-size:34px">💙</div>
+      <h2>Para el mejor papá del mundo</h2>
+      <p>Gracias por tu amor incondicional, por tu esfuerzo diario y por ser mi ejemplo de fortaleza, honestidad y bondad.</p>
+      <p>Cada enseñanza tuya ha dejado una huella imborrable en mi vida.</p>
+      <p>Hoy y siempre, te agradezco por ser mi guía, mi apoyo y mi héroe.</p>
+      <p class="firma">¡Te quiero mucho, papá! 💙</p>
+      <p class="gracias">Gracias papá ❤️</p>
+    </section>
+
+    <p class="notice">Copa Fifa 2026 · Llavero con dedicatoria QR</p>
+  </main>
+
+  <script>
+    const urlCancion = "https://www.youtube.com/watch?v=mivSRv18QaY&list=RDmivSRv18QaY&start_radio=1";
+    const card = document.getElementById("dedicatoria");
+
+    function lanzarEfectos(cantidad = 34) {
+      const iconos = ["⚽", "💙", "💛", "🏆"];
+      for (let i = 0; i < cantidad; i++) {
+        const item = document.createElement("div");
+        item.className = "float";
+        item.textContent = iconos[Math.floor(Math.random() * iconos.length)];
+        item.style.left = Math.random() * 100 + "vw";
+        item.style.animationDuration = (2.5 + Math.random() * 3) + "s";
+        item.style.fontSize = (20 + Math.random() * 26) + "px";
+        document.body.appendChild(item);
+        setTimeout(() => item.remove(), 6000);
+      }
+    }
+
+    document.getElementById("btnSorpresa").addEventListener("click", function(){
+      card.style.display = "block";
+      card.scrollIntoView({behavior:"smooth", block:"center"});
+      lanzarEfectos(42);
+    });
+
+    document.getElementById("btnCancion").addEventListener("click", function(){
+      lanzarEfectos(30);
+      window.open(urlCancion, "_blank");
+    });
+  </script>
+</body>
+</html>
