@@ -1,1 +1,0 @@
-# -llavero-qr
